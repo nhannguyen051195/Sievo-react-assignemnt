@@ -1,0 +1,18 @@
+.jumbotron{
+    background-image: linear-gradient(to bottom right, rgba(0, 153, 255, 0.123), rgba(202, 50, 39, 0.294)), 
+    url('https://png.pngtree.com/thumb_back/fw800/back_pic/02/68/49/335790b54639cec.jpg');
+     background-size: 100% 100%;
+  
+  }
+  .LinkedIn{
+      font-size: 40px;
+      z-index: 200;
+      margin: 5px 5px
+  }
+  .welcoming{
+color: rgb(5, 132, 252);
+font-family: 'Slabo 27px', serif;
+
+
+
+}

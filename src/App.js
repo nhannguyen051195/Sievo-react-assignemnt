@@ -1,25 +1,81 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Products from './Components/Products'
 import './App.css';
-
+import axios from 'axios';
+import Search from './Components/Search';
+import Sort from './Components/Sort';
+import _ from 'lodash';
+import Header from './Components/Header'
 class App extends Component {
+  state = {
+    data: [],
+    searchVal: '',
+    orderBy: ''
+  }
+  componentDidMount() {
+    function convertDate(inputFormat) {
+      function pad(s) { return (s < 10) ? '0' + s : s; }
+      var d = new Date(inputFormat);
+      return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('.');
+    }
+    axios.get('https://sievo-react-assignment.azurewebsites.net/api/data')
+      .then(response =>
+
+        response.data.map(data => ({
+          Projects: data.project,
+          Description: data.description,
+          "Start day": convertDate(data['start date']),
+          Category: data.category,
+          Responsible: data.responsible,
+          Currency: data.currency,
+          Complexity: data.complexity,
+          "Savings amount": data['savings amount'],
+        }))
+
+      ).then(data => {
+        this.setState({ data: data })
+      });
+  }
+
+  handleSearch = (value) => {
+    this.setState({
+      searchVal: value
+    })
+  }
+  handleSort = (value) => {
+    this.setState({
+      orderBy: value
+    })
+  }
   render() {
+    let { data } = this.state;
+    const { orderBy, searchVal } = this.state;
+    let display = [];
+    if (orderBy == 1) {
+      display = data.sort((a, b) => {
+        return a.Projects - b.Projects
+      })
+    }
+    if (orderBy == 2) {
+      display = data.sort((a, b) => {
+        return b.Projects - a.Projects
+      })
+    }
+
+    if (searchVal.length > 0) {
+      display = _.filter(data, (item) => {
+        return _.includes(item.Description.toLowerCase(), searchVal.toLowerCase())
+      })
+    }
+    else { display = data }
+
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='container'>
+        <Header/>
+        <Search handleSearch={this.handleSearch} />
+        <Sort orderBy={orderBy} handleSort={this.handleSort} />
+        <Products products={display} />
       </div>
     );
   }
