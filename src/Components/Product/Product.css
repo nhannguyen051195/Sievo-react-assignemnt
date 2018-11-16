@@ -1,6 +1,6 @@
 .list{
     list-style-type: none;
-    background-color: rgba(164, 145, 216, 0.247);
+    background-color: rgba(211, 206, 226, 0.247);
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-row-gap: 1rem;
@@ -14,14 +14,7 @@
     transition: transform .3s;
     transition: transform .3s, -webkit-transform .3s;
 }
-.flexbox{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-content: flex-start;
-    flex-wrap: wrap
 
-}
 ul.flexbox{
     list-style-type: none;
     margin: 0;
@@ -31,13 +24,25 @@ ul.flexbox{
 .key{
     font-weight: bold
 }
-.value{
+.value span{
     overflow: hidden;
     text-overflow: ellipsis; 
-    flex-grow: 2
+flex: 1 auto
 }
 .list:hover {
     -webkit-transform: translateY(-1.5rem) scale(1.03);
-    transform: translateY(-1.5rem) scale(1.03);
+    transform: translateY(-0.8rem) scale(1.03);
+}
+
+
+
+ul li {
+    border-radius: 3px;
+    padding: 3px;
+    background-color: rgba(75, 78, 75, 0.205) 
+}
+ul li:hover {
+   
+    background-color: rgba(233, 96, 33, 0.568) 
 }
 
