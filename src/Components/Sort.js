@@ -29,13 +29,20 @@ class Sort extends Component {
             <div className='form-group'>
                 <Form onSubmit={this.handleSubmit} horizontal>
 
-                    <Col componentClass={ControlLabel} sm={3} >
-                        Sort by Project ID:
+                    <Col componentClass={ControlLabel} sm={2} >
+                        Sort by:
                     </Col>
-                    <Col sm={2}>                      
+                    <Col sm={3}>                      
                     <select value={this.state.value} onChange={this.handleChange} className='form-control'>
-                        <option value={1}>Increasing</option>
-                        <option value={2}>Decreasing</option>
+                        <option value={1}>Project ID: Increasing</option>
+                        <option value={2}>Project ID: Decreasing</option>
+                        <option value={3}>Description: A->Z</option>
+                        <option value={4}>Description: Z->A</option>
+                        <option value={5}>Date: Oldest</option>
+                        <option value={6}>Date: Newest</option>
+
+
+
                     </select>
                     </Col>
 

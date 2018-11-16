@@ -61,6 +61,33 @@ class App extends Component {
         return b.Projects - a.Projects
       })
     }
+    if (orderBy == 3) {
+      display = data.sort((a, b) => {
+        var textA = a.Description.toUpperCase();
+        var textB = b.Description.toUpperCase();
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+      })
+    }
+    if (orderBy == 4) {
+      display = data.sort((a, b) => {
+        var textA = a.Description.toUpperCase();
+        var textB = b.Description.toUpperCase();
+    return (textB < textA) ? -1 : (textB > textA) ? 1 : 0;
+      })
+    }
+    if (orderBy == 5) {
+      display = data.sort((a, b) => {
+        var c = new Date(a["Start day"]);
+        var d = new Date(b["Start day"]);
+        return c-d;    
+       })
+    }
+    if (orderBy == 6) {
+      display = data.sort((a, b) => {
+        return new Date(b["Start day"]) - new Date(a["Start day"]);
+
+       })
+    }
 
     if (searchVal.length > 0) {
       display = _.filter(data, (item) => {
