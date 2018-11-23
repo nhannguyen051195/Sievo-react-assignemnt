@@ -6,7 +6,7 @@ import './Sort.css'
 class Sort extends Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
+        this.state = { value: null };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,12 +34,14 @@ class Sort extends Component {
                     </Col>
                     <Col sm={3}>                      
                     <select value={this.state.value} onChange={this.handleChange} className='form-control'>
+                        <option value={0}>Select below...</option>
                         <option value={1}>Project ID: Increasing</option>
                         <option value={2}>Project ID: Decreasing</option>
                         <option value={3}>Description: A->Z</option>
                         <option value={4}>Description: Z->A</option>
                         <option value={5}>Date: Oldest</option>
                         <option value={6}>Date: Newest</option>
+
 
 
 

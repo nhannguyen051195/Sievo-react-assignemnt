@@ -10,7 +10,7 @@ class App extends Component {
   state = {
     data: [],
     searchVal: '',
-    orderBy: ''
+    orderBy: null
   }
   componentDidMount() {
     function convertDate(inputFormat) {
@@ -54,8 +54,7 @@ class App extends Component {
     if (orderBy == 1) {
       display = data.sort((a, b) => {
         return a.Projects - b.Projects
-      })
-    }
+      })    }
     if (orderBy == 2) {
       display = data.sort((a, b) => {
         return b.Projects - a.Projects

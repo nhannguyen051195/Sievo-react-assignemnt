@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, ControlLabel, Form, Col } from 'react-bootstrap';
+import {  ControlLabel, Form, Col } from 'react-bootstrap';
+import {Button} from "reactstrap"
 import './Search.css'
 
 class Search extends Component {
@@ -25,11 +26,16 @@ class Search extends Component {
                 <div className='form-group'>
                     <Form horizontal>
 
-                        <Col componentClass={ControlLabel} sm={1}>Search </Col>
+                        <Col componentClass={ControlLabel} sm={1}> Search </Col>
                         <Col sm={4}>
-                            <input onChange={this.handleChange} value={this.state.strSearch} type='text' className='form-control' placeholder='Search by description...' />
-                            <Button onClick={this.handleSearch} className='btn btn-success' type='button'><i class="fas fa-search"></i> Search</Button>
-                            <Button onClick={this.handleClear} className='btn btn-warning' type='button'> <i class="fas fa-undo-alt"></i> Undo</Button>
+                        <div className="input-group">
+
+                        <span className="input-group-addon"><i className="glyphicon glyphicon-search"></i></span>
+                            <input onChange={this.handleChange} value={this.state.strSearch} type='text' 
+                            className='form-control' placeholder='Search by description...'/>
+                            </div>
+                            <Button onClick={this.handleSearch} className="btn btn-primary" type='button'><i className="fas fa-search"></i> Search</Button>
+                            <Button onClick={this.handleClear} className='btn btn-warning' type='button'> <i className="fas fa-undo-alt"></i> Undo</Button>
                         </Col>
                     </Form>
 
