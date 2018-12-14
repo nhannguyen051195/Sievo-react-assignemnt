@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-
 import Products from './Components/Products';
 import App from './App';
 import Header from './Components/Header'

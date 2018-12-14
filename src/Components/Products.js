@@ -1,23 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Product from './Product/Product';
-import  './Products.css';
+import './Products.css';
 
-
-
-class products extends Component {
-
-
-    render() {
-        let details = this.props.products.map((obj, index)=>
-        {
-        return <Product key ={index} result={obj}/>})
-        
-        return (
-            <div className ='products'>
-                    {details}               
-            </div>
-        );
-    }
+function Products(props) {
+  // eslint-disable-next-line react/no-array-index-key
+  const details = props.products.map((obj, index) => <Product key={index} result={obj} />);
+  return (
+    <div className="products">
+      {details}
+    </div>
+  );
 }
-
-export default products;
+export default Products;
